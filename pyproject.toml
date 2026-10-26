@@ -1,0 +1,9 @@
+[project]
+name = "crew-ai-experiment-1"
+version = "0.1.0"
+description = "CrewAI multi-agent learning experiments (uv-managed)"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "crewai[anthropic,tools]>=1.15.30,<2.0.0",
+    "python-dotenv>=1.2.2",
+]
