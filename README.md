@@ -12,6 +12,7 @@ cd crew-ai-experiment-1
 uv sync                   # Python 3.12 আর সব dependency install করে
 cp .env.example .env      # তারপর .env-এ ANTHROPIC_API_KEY বসান
 uv run main.py --ping     # setup ঠিক আছে কিনা check করে
+uv run python -m phase1_research_crew "Java virtual threads"   # Phase 1 crew চালায়
 ```
 
 ## CrewAI কী?
@@ -57,7 +58,7 @@ uv run main.py --ping     # setup ঠিক আছে কিনা check কর�
 - [ ] `Task`: `description`, `expected_output`, কোন agent কাজটা করবে
 - [ ] `Crew`: agents আর tasks একসাথে, `Process.sequential` দিয়ে
 - [ ] `crewai create crew <name> --classic` দিয়ে official scaffold দেখা: `config/agents.yaml`, `config/tasks.yaml`, `crew.py`, `main.py`
-- 🎯 **Project:** "Topic Researcher + Writer" crew, যেটা একটা topic নিয়ে markdown report বানাবে।
+- 🎯 **Project:** "Topic Researcher + Writer" crew, যেটা একটা topic নিয়ে markdown report বানাবে। ✅ Implemented: [`phase1_research_crew/`](phase1_research_crew/)
 
 ### Phase 2: Tools ও Structured Output (সপ্তাহ ৩)
 
@@ -136,7 +137,16 @@ crew-ai-experiment-1/
 ├── uv.lock           # exact version lock, commit করা থাকে
 ├── .python-version   # Python 3.12 pin
 ├── .env.example      # .env-এর template (MODEL, API keys)
-└── main.py           # environment check: uv run main.py --ping
+├── main.py           # environment check: uv run main.py --ping
+├── phase1_research_crew/
+│   ├── config/
+│   │   ├── agents.yaml   # researcher আর writer agent
+│   │   └── tasks.yaml    # research_task আর writing_task
+│   ├── crew.py           # @CrewBase class
+│   ├── __main__.py       # CLI: uv run python -m phase1_research_crew "<topic>"
+│   └── README.md         # Phase 1-এর ব্যাখ্যা আর exercises
+├── tests/            # offline test (fake Claude API): uv run pytest
+└── output/           # crew-এর বানানো report (git-ignored)
 ```
 
 ## Resources

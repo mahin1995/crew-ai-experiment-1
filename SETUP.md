@@ -105,6 +105,7 @@ Setup OK
 | কাজ | Command |
 |---|---|
 | Script চালানো | `uv run main.py` |
+| Test চালানো (offline, API খরচ নেই) | `uv run pytest` |
 | নতুন package যোগ করা | `uv add <package>` (যেমন `uv add fastapi`) |
 | শুধু development-এর package | `uv add --dev <package>` (যেমন `uv add --dev pytest`) |
 | Package বাদ দেওয়া | `uv remove <package>` |
@@ -129,7 +130,7 @@ CrewAI-এর CLI এই environment-এই install করা আছে:
 uv run crewai create crew research_crew --classic
 ```
 
-- `--classic` দিলে চেনা Python/YAML structure পাবেন: `config/agents.yaml`, `config/tasks.yaml`, `crew.py`, `main.py`। না দিলে CLI একটা interactive wizard চালায়।
+- `--classic` দিলে চেনা Python/YAML structure পাবেন: `config/agents.yaml`, `config/tasks.yaml`, `crew.py`, `main.py`। না দিলে CLI একটা interactive wizard চালায়। এই repo-র [`phase1_research_crew/`](phase1_research_crew/)-ও একই structure মেনে চলে।
 - এটা নিজের `pyproject.toml` সহ আলাদা একটা uv project বানায়, আর তার ভেতরে নতুন `git init` করে। এই repo-র ভেতরে বানালে নতুন folder-এর `.git` মুছে দিন (`rm -rf research_crew/.git`), নাহলে nested git repo হয়ে যাবে।
 
 ## Troubleshooting

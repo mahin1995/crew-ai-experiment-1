@@ -1,0 +1,27 @@
+# Tasks run in this order (Process.sequential). The output of research_task is
+# passed to writing_task automatically as context.
+# YAML tip: `>-` joins lines into one paragraph, `|-` keeps line breaks (for lists).
+
+research_task:
+  description: |-
+    Research "{topic}". Cover:
+    1. What it is and why it matters
+    2. Key concepts and how it works
+    3. Real-world use cases, with concrete examples
+    4. Advantages, disadvantages and trade-offs
+    5. Common pitfalls and best practices
+  expected_output: >-
+    Research notes in markdown: one heading per point above, each with 3-5
+    concise bullet points. Mark uncertain information with "(unverified)".
+  agent: researcher
+
+writing_task:
+  description: >-
+    Using the research notes, write a report about "{topic}" in {language}.
+    Keep technical terms and code identifiers in English.
+  expected_output: >-
+    A complete markdown report with a title, a 3-4 sentence executive summary,
+    one section per research heading, at least one comparison table, and a
+    "Key Takeaways" list of 3-5 bullets. Return only the markdown, without
+    wrapping it in a code block.
+  agent: writer

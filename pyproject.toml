@@ -7,3 +7,14 @@ dependencies = [
     "crewai[anthropic,tools]>=1.15.30,<2.0.0",
     "python-dotenv>=1.2.2",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+# CrewAI's own internals emit DeprecationWarnings; hide them so test output stays readable.
+filterwarnings = ["ignore::DeprecationWarning:crewai"]

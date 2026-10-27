@@ -12,8 +12,9 @@ wheels/
 # Secrets
 .env
 
-# CrewAI local state
+# CrewAI local state and generated reports
 .crewai/
+output/
 
 # IDE / OS
 .idea/
